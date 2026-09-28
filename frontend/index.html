@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DataPilot</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <div>
+
+        <div class="brand">
+            DataPilot
+        </div>
+
+        <div class="subtitle">
+            AI Document & Data Assistant
+        </div>
+
+    </div>
+
+
+    <button
+        id="clearCacheBtn"
+        class="danger-btn"
+    >
+        Clear Memory
+    </button>
+
+</header>
+
+
+
+<main class="app-shell">
+
+    <!-- ================= FILES ================= -->
+
+    <aside class="files-panel">
+
+        <div class="panel-heading">
+
+            <div>
+                <h2>Files</h2>
+                <span id="fileCount">0 files</span>
+            </div>
+
+            <label class="upload-btn">
+                + Upload
+
+                <input
+                    id="fileInput"
+                    type="file"
+                    hidden
+                    multiple
+                    accept=".pdf,.docx,.txt,.md,.csv,.xlsx,.xls"
+                >
+            </label>
+
+        </div>
+
+
+        <div class="scope-box">
+
+            <div class="scope-title">
+                Chat Scope
+            </div>
+
+            <label class="scope-option">
+                <input
+                    type="radio"
+                    name="scope"
+                    value="single"
+                    checked
+                >
+                <span>Single File</span>
+            </label>
+
+            <label class="scope-option">
+                <input
+                    type="radio"
+                    name="scope"
+                    value="multi"
+                >
+                <span>Multiple Files</span>
+            </label>
+
+        </div>
+
+
+        <div
+            id="fileList"
+            class="file-list"
+        >
+            <div class="empty-files">
+                Upload one or more files to begin.
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- ================= CHATBOT ================= -->
+
+    <section class="chat-panel">
+
+        <div class="panel-title">
+
+            <div>
+
+                <h1>AI Chatbot</h1>
+
+                <p id="fileStatus">
+                    Upload files and select a chat scope.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="messages"
+            class="messages"
+        >
+
+            <div class="welcome-card">
+
+                <h2>
+                    Ask your files anything.
+                </h2>
+
+                <p>
+                    Upload PDF, DOCX, TXT,
+                    Markdown, CSV or Excel files.
+                    DataPilot automatically selects
+                    the appropriate pipeline.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="chat-input-row">
+
+            <textarea
+                id="questionInput"
+                placeholder="Ask a question about the selected file(s)..."
+                rows="2"
+            ></textarea>
+
+            <button
+                id="sendBtn"
+                class="send-btn"
+            >
+                Send
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= REPORT ================= -->
+
+    <aside class="side-panel">
+
+        <div class="side-card">
+
+            <h2>
+                Report Generator
+            </h2>
+
+            <p>
+                Describe how you want the report
+                to look and what it should contain.
+            </p>
+
+            <textarea
+                id="reportSpecs"
+                placeholder="Example:
+
+• Include an executive summary
+• Focus on revenue trends
+• Compare states
+• Include key findings
+• Add recommendations
+• Keep it concise"
+            ></textarea>
+
+            <button
+                id="generateReportBtn"
+                class="report-btn"
+            >
+                Generate Report
+            </button>
+
+        </div>
+
+
+        <div
+            id="reportOutput"
+            class="side-card hidden"
+        >
+
+            <h2>
+                Generated Report
+            </h2>
+
+            <div
+                id="reportText"
+                class="report-text"
+            ></div>
+
+            <div class="download-row">
+
+                <a
+                    id="pdfLink"
+                    class="download-btn"
+                    target="_blank"
+                >
+                    PDF
+                </a>
+
+                <a
+                    id="docxLink"
+                    class="download-btn"
+                    target="_blank"
+                >
+                    DOCX
+                </a>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+</main>
+
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>

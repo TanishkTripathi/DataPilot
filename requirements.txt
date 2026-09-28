@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pandas
+numpy
+openpyxl
+chromadb
+sentence-transformers
+torch
+google-genai
+pymupdf
+python-docx
+reportlab
+python-dotenv
+google-cloud-storage

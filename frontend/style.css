@@ -1,0 +1,943 @@
+:root {
+  --black: #141414;
+  --black-2: #202020;
+  --red: #b91c1c;
+  --red-dark: #8f1414;
+  --orange: #ea580c;
+  --yellow: #facc15;
+  --cream: #fffaf0;
+  --white: #ffffff;
+  --border: #ead9c8;
+  --muted: #6b6259;
+  --shadow: 0 10px 30px rgba(70, 30, 10, 0.10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   PAGE
+   ============================================================ */
+
+html {
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: linear-gradient(
+    135deg,
+    #fffaf0 0%,
+    #fff5e5 50%,
+    #ffe7c2 100%
+  );
+
+  color: var(--black);
+
+  min-height: 100vh;
+
+  /* Whole page scrollbar */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+
+.topbar {
+  min-height: 78px;
+
+  padding: 14px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--black);
+  color: var(--white);
+
+  flex: 0 0 auto;
+}
+
+.brand {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  color: #f6c78e;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+
+/* ============================================================
+   MAIN 3-COLUMN LAYOUT
+   ============================================================ */
+
+.app-shell {
+  width: min(1550px, 97vw);
+
+  margin: 18px auto;
+
+  display: grid;
+
+  grid-template-columns:
+    245px
+    minmax(0, 1fr)
+    330px;
+
+  gap: 15px;
+
+  /*
+   * Fixed height for all main panels.
+   * The page itself can still scroll.
+   */
+  height: calc(100vh - 112px);
+
+  min-height: 600px;
+
+  /*
+   * IMPORTANT:
+   * Do not clip the page itself.
+   */
+  overflow: visible;
+
+  align-items: stretch;
+}
+
+
+/* ============================================================
+   COMMON CARD STYLE
+   ============================================================ */
+
+.chat-panel,
+.files-panel,
+.side-card {
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  box-shadow: var(--shadow);
+}
+
+
+/* ============================================================
+   FILES PANEL
+   ============================================================ */
+
+.files-panel {
+  height: 100%;
+  min-height: 0;
+
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   FILE PANEL HEADER
+   ============================================================ */
+
+.panel-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   CHAT PANEL
+   ============================================================ */
+
+.chat-panel {
+  height: 100%;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   CHAT HEADER
+   ============================================================ */
+
+.panel-title {
+  padding: 18px 20px;
+
+  border-bottom: 1px solid var(--border);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  flex: 0 0 auto;
+}
+
+.panel-title h1 {
+  margin: 0;
+
+  font-size: 22px;
+}
+
+.panel-title p {
+  margin: 5px 0 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.upload-btn,
+.send-btn,
+.report-btn,
+.danger-btn {
+  border: none;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.upload-btn {
+  background: var(--orange);
+
+  color: white;
+
+  padding: 11px 15px;
+}
+
+.upload-btn:hover {
+  background: #c2410c;
+}
+
+.send-btn {
+  align-self: stretch;
+
+  width: 92px;
+
+  background: var(--red);
+
+  color: white;
+}
+
+.send-btn:hover {
+  background: var(--red-dark);
+}
+
+.send-btn:disabled {
+  opacity: 0.7;
+
+  cursor: wait;
+}
+
+.report-btn {
+  width: 100%;
+
+  background: var(--yellow);
+
+  color: var(--black);
+
+  padding: 12px;
+}
+
+.report-btn:hover {
+  background: #eab308;
+}
+
+.report-btn:disabled {
+  opacity: 0.7;
+
+  cursor: wait;
+}
+
+.danger-btn {
+  background: transparent;
+
+  border: 1px solid #8f8f8f;
+
+  color: #fff;
+
+  padding: 9px 13px;
+}
+
+.danger-btn:hover {
+  background: var(--red-dark);
+
+  border-color: var(--red-dark);
+}
+
+
+/* ============================================================
+   CHAT MESSAGE AREA
+   ============================================================ */
+
+.messages {
+  flex: 1;
+
+  min-height: 0;
+
+  padding: 12px 16px;
+
+  /*
+   * ONLY chat messages scroll.
+   */
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+}
+
+
+/* ============================================================
+   WELCOME CARD
+   ============================================================ */
+
+.welcome-card {
+  border: 1px dashed #e3b98f;
+
+  background: #fff8ed;
+
+  padding: 24px;
+
+  border-radius: 14px;
+
+  max-width: 700px;
+}
+
+.welcome-card h2 {
+  margin-top: 0;
+}
+
+
+/* ============================================================
+   CHAT MESSAGES
+   ============================================================ */
+
+.msg {
+  max-width: 84%;
+
+  margin: 0 0 10px;
+
+  padding: 7px 10px;
+
+  border-radius: 11px;
+
+  line-height: 1.4;
+
+  font-size: 13px;
+
+  width: fit-content;
+
+  overflow-wrap: anywhere;
+}
+
+.msg > div:first-child {
+  max-width: 100%;
+
+  overflow-wrap: anywhere;
+}
+
+.msg.user {
+  margin-left: auto;
+
+  background: #1e1e1e;
+
+  color: white;
+}
+
+.msg.assistant {
+  background: #fff1dc;
+
+  border: 1px solid #f1c796;
+}
+
+
+/* ============================================================
+   CHAT METADATA
+   ============================================================ */
+
+.meta {
+  margin-top: 10px;
+
+  font-size: 11px;
+
+  color: var(--muted);
+}
+
+
+/* ============================================================
+   CHAT INPUT
+   ============================================================ */
+
+.chat-input-row {
+  flex: 0 0 auto;
+
+  border-top: 1px solid var(--border);
+
+  padding: 14px;
+
+  display: flex;
+
+  gap: 10px;
+
+  background: #fffdf9;
+}
+
+.chat-input-row textarea {
+  width: 100%;
+
+  resize: vertical;
+
+  border: 1px solid #dfc8b0;
+
+  border-radius: 12px;
+
+  padding: 10px;
+
+  font: inherit;
+
+  outline: none;
+
+  min-height: 48px;
+}
+
+.chat-input-row textarea:focus {
+  border-color: var(--orange);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(234, 88, 12, 0.12);
+}
+
+
+/* ============================================================
+   RIGHT SIDE PANEL
+   ============================================================ */
+
+.side-panel {
+  height: 100%;
+
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+
+  overflow: hidden;
+}
+
+
+/*
+ * BOTH report cards get exactly equal height.
+ */
+.side-panel > .side-card {
+  flex: 1 1 0;
+
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  padding: 17px;
+}
+
+.side-card h2 {
+  margin: 0 0 6px;
+
+  font-size: 19px;
+
+  flex: 0 0 auto;
+}
+
+.side-card p {
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   REPORT SPECIFICATIONS
+   ============================================================ */
+
+#reportSpecs {
+  flex: 1;
+
+  min-height: 0;
+
+  width: 100%;
+
+  resize: none;
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  margin: 8px 0 12px;
+
+  border: 1px solid #dfc8b0;
+
+  border-radius: 12px;
+
+  padding: 12px;
+
+  font: inherit;
+
+  outline: none;
+}
+
+#reportSpecs:focus {
+  border-color: var(--orange);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(234, 88, 12, 0.12);
+}
+
+
+/* ============================================================
+   GENERATED REPORT PANEL
+   ============================================================ */
+
+#reportOutput {
+  /*
+   * DO NOT give this a separate height.
+   * It gets exactly the same height as the
+   * Report Generator because both .side-card
+   * elements use flex: 1 1 0.
+   */
+  flex: 1 1 0;
+
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   GENERATED REPORT CONTENT
+   ============================================================ */
+
+.report-text {
+  flex: 1;
+
+  min-height: 0;
+
+  /*
+   * ONLY report content scrolls.
+   */
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  background: var(--cream);
+
+  border: 1px solid var(--border);
+
+  border-radius: 11px;
+
+  padding: 11px;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+
+  white-space: pre-wrap;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   REPORT DOWNLOAD BUTTONS
+   ============================================================ */
+
+.download-row {
+  flex: 0 0 auto;
+
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.download-btn {
+  flex: 1;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  background: var(--black);
+
+  color: white;
+
+  padding: 10px;
+
+  border-radius: 9px;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   SOURCE CHIPS
+   ============================================================ */
+
+.source-chip {
+  display: inline-block;
+
+  margin: 3px 4px 0 0;
+
+  padding: 4px 7px;
+
+  border-radius: 999px;
+
+  background: #fff4c2;
+
+  color: #5f4800;
+
+  font-size: 11px;
+}
+
+
+/* ============================================================
+   RESULT TABLE
+   ============================================================ */
+
+.result-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  margin-top: 10px;
+
+  font-size: 12px;
+
+  max-width: 100%;
+}
+
+.result-table th,
+.result-table td {
+  border: 1px solid #ead9c8;
+
+  padding: 6px;
+
+  text-align: left;
+
+  word-break: break-word;
+}
+
+.result-table th {
+  background: #fff0cb;
+}
+
+
+/* ============================================================
+   SQL DISPLAY
+   ============================================================ */
+
+pre.sql {
+  background: #181818;
+
+  color: #ffe7a6;
+
+  border-radius: 10px;
+
+  padding: 12px;
+
+  overflow: auto;
+
+  font-size: 12px;
+
+  max-width: 100%;
+
+  flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   FILE SCOPE
+   ============================================================ */
+
+.scope-box {
+  margin: 15px 0;
+
+  padding: 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: var(--cream);
+
+  flex: 0 0 auto;
+}
+
+.scope-title {
+  font-weight: 700;
+
+  font-size: 12px;
+
+  margin-bottom: 8px;
+}
+
+.scope-option {
+  display: block;
+
+  margin: 7px 0;
+
+  font-size: 13px;
+}
+
+
+/* ============================================================
+   FILE LIST
+   ============================================================ */
+
+.file-list {
+  flex: 1;
+
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  /*
+   * Files panel gets its own scrollbar.
+   */
+  overflow-y: auto;
+
+  overflow-x: hidden;
+}
+
+.file-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px;
+
+  border: 1px solid #eadbc9;
+
+  border-radius: 10px;
+
+  background: #fffdf9;
+
+  cursor: pointer;
+
+  flex: 0 0 auto;
+}
+
+.file-card:hover {
+  border-color: var(--orange);
+}
+
+.selected-file {
+  border-color: var(--red);
+
+  background: #fff4e8;
+}
+
+.file-details {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.file-name {
+  font-size: 12px;
+
+  font-weight: 700;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.file-meta {
+  color: var(--muted);
+
+  font-size: 10px;
+
+  margin-top: 2px;
+}
+
+.empty-files {
+  padding: 15px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  border: 1px dashed #e1c6a8;
+
+  border-radius: 10px;
+
+  flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   HIDDEN
+   ============================================================ */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ============================================================
+   GENERAL TEXT PROTECTION
+   ============================================================ */
+
+.msg,
+.report-text,
+.file-name,
+.file-meta {
+  overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   MEDIUM SCREEN
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .app-shell {
+    grid-template-columns:
+      220px
+      minmax(0, 1fr);
+
+    /*
+     * Page becomes vertically scrollable.
+     */
+    height: auto;
+
+    min-height: 0;
+
+    overflow: visible;
+  }
+
+  .files-panel {
+    height: 650px;
+  }
+
+  .chat-panel {
+    height: 650px;
+  }
+
+  .side-panel {
+    grid-column: 1 / -1;
+
+    height: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+  }
+}
+
+
+/* ============================================================
+   SMALL SCREEN
+   ============================================================ */
+
+@media (max-width: 750px) {
+
+  .app-shell {
+    grid-template-columns: 1fr;
+
+    height: auto;
+
+    min-height: 0;
+
+    overflow: visible;
+  }
+
+  .files-panel {
+    height: 400px;
+  }
+
+  .chat-panel {
+    height: 650px;
+  }
+
+  .side-panel {
+    height: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+  }
+}
