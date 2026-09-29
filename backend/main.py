@@ -2427,32 +2427,21 @@ def report_context_for_file(
         )
 
 
+   profile_text = json.dumps(
+        profile,
+        indent=2,
+        default=str
+    )
+
+    sample_rows = df.head(10).to_string(index=False)
+    
     return (
-
-        f"SOURCE TYPE: "
-        f"STRUCTURED DATASET\n"
-
-        f"FILE: "
-        f"{item['filename']}\n\n"
-
         f"DATASET PROFILE:\n"
-
-        f"{json.dumps(
-            profile,
-            indent=2,
-            default=str
-        )}\n\n"
-
+        f"{profile_text}\n\n"
         f"DESCRIPTIVE STATISTICS:\n"
-
         f"{statistics}\n\n"
-
         f"SAMPLE ROWS:\n"
-
-        f"{df.head(10).to_string(
-            index=False
-        )}"
-
+        f"{sample_rows}"
     )
 
 
