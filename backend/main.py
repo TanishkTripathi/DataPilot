@@ -1228,16 +1228,13 @@ RULES:
                     sql = repaired_sql
 
 
-                    sql_context = (
+                    result_text = result.to_string(index=False)
 
+                    sql_context = (
                         f"SQL:\n"
                         f"{sql}\n\n"
-
                         f"RESULT:\n"
-                        f"{result.to_string(
-                            index=False
-                        )}"
-
+                        f"{result_text}"
                     )
 
 
