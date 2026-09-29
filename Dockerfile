@@ -19,7 +19,6 @@ RUN pip install --upgrade pip \
 COPY backend ./backend
 COPY frontend ./frontend
 COPY run.py ./run.py
-COPY .env.example ./.env.example
 COPY README.md ./README.md
 
 RUN mkdir -p /app/storage/chroma /app/storage/objects
