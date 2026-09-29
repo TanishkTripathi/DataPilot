@@ -2427,7 +2427,7 @@ def report_context_for_file(
         )
 
 
-   profile_text = json.dumps(
+    profile_text = json.dumps(
         profile,
         indent=2,
         default=str
